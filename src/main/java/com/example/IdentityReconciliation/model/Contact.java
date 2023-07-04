@@ -6,6 +6,7 @@ package com.example.IdentityReconciliation.model;
 
 import java.time.LocalDateTime;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -22,19 +23,26 @@ public class Contact {
 	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private int id;
 	
+	@Column(nullable = true)
 	private String phoneNumber;
 	
+	@Column(nullable = true)
 	private String email;
 	
+	@Column(nullable = true)
 	private int linkedId;
 	
 	// Only "primary" | "secondary"
+	@Column(nullable = false)
 	private LinkPrecedence linkPrecendence;
 	
+	@Column(nullable = false)
 	private LocalDateTime createdAt;
 	
+	@Column(nullable = false)
 	private LocalDateTime updatedAt;
 	
+	@Column(nullable = true)
 	private LocalDateTime deletedAt;
 
 	public Contact() {
