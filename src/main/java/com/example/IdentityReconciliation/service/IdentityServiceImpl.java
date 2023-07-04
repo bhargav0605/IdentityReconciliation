@@ -9,12 +9,15 @@ import com.example.IdentityReconciliation.dao.ContactDaoImpl;
 import com.example.IdentityReconciliation.model.Contact;
 
 @Service
-public class IdentityService {
+public class IdentityServiceImpl implements IdentityService{
 	
 	@Autowired
 	private ContactDaoImpl contactDaoImpl;
-	
+
+	@Override
 	public List<Contact> identify() {
+		// TODO Auto-generated method stub
 		return contactDaoImpl.getContact();
 	}
+	
 }
