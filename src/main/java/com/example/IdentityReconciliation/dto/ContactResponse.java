@@ -4,28 +4,29 @@
  */
 package com.example.IdentityReconciliation.dto;
 
-import java.util.Arrays;
+import java.util.List;
 
 public class ContactResponse {
 	
 	private int primaryContatctId;
 	
-	private String[] emails;
+	private List<String> emails;
 	
-	private String[] phoneNumbers;
+	private List<String> phoneNumbers;
 	
-	private int[] secondaryContactIds;
+	private List<Integer> secondaryContactIds;
 
-	public ContactResponse(int primaryContatctId, String[] emails, String[] phoneNumbers, int[] secondaryContactIds) {
+	public ContactResponse() {
+		super();
+	}
+
+	public ContactResponse(int primaryContatctId, List<String> emails, List<String> phoneNumbers,
+			List<Integer> secondaryContactIds) {
 		super();
 		this.primaryContatctId = primaryContatctId;
 		this.emails = emails;
 		this.phoneNumbers = phoneNumbers;
 		this.secondaryContactIds = secondaryContactIds;
-	}
-
-	public ContactResponse() {
-		super();
 	}
 
 	public int getPrimaryContatctId() {
@@ -36,35 +37,36 @@ public class ContactResponse {
 		this.primaryContatctId = primaryContatctId;
 	}
 
-	public String[] getEmails() {
+	public List<String> getEmails() {
 		return emails;
 	}
 
-	public void setEmails(String[] emails) {
+	public void setEmails(List<String> emails) {
 		this.emails = emails;
 	}
 
-	public String[] getPhoneNumbers() {
+	public List<String> getPhoneNumbers() {
 		return phoneNumbers;
 	}
 
-	public void setPhoneNumbers(String[] phoneNumbers) {
+	public void setPhoneNumbers(List<String> phoneNumbers) {
 		this.phoneNumbers = phoneNumbers;
 	}
 
-	public int[] getSecondaryContactIds() {
+	public List<Integer> getSecondaryContactIds() {
 		return secondaryContactIds;
 	}
 
-	public void setSecondaryContactIds(int[] secondaryContactIds) {
+	public void setSecondaryContactIds(List<Integer> secondaryContactIds) {
 		this.secondaryContactIds = secondaryContactIds;
 	}
 
 	@Override
 	public String toString() {
-		return "ContactResponse [primaryContatctId=" + primaryContatctId + ", emails=" + Arrays.toString(emails)
-				+ ", phoneNumbers=" + Arrays.toString(phoneNumbers) + ", secondaryContactIds="
-				+ Arrays.toString(secondaryContactIds) + "]";
+		return "ContactResponse [primaryContatctId=" + primaryContatctId + ", emails=" + emails + ", phoneNumbers="
+				+ phoneNumbers + ", secondaryContactIds=" + secondaryContactIds + "]";
 	}
+
+	
 }
 // end of the class

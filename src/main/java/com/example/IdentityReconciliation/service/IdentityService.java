@@ -1,11 +1,14 @@
+/**
+ * Author: Bhargav Parmar
+ * Email: bhargavparmar7080@gmail.com
+ */
 package com.example.IdentityReconciliation.service;
 
-import java.util.List;
-
-import com.example.IdentityReconciliation.model.Contact;
+import com.example.IdentityReconciliation.dto.IdentityRequest;
+import com.example.IdentityReconciliation.dto.IdentityResponse;
 
 public interface IdentityService {
 	
-	public List<Contact> identify();
+	IdentityResponse identify(IdentityRequest identityRequest);
 
 }

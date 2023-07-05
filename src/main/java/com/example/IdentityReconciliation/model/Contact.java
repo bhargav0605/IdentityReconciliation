@@ -8,6 +8,8 @@ import java.time.LocalDateTime;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -30,10 +32,11 @@ public class Contact {
 	private String email;
 	
 	@Column(nullable = true)
-	private int linkedId;
+	private Integer linkedId;
 	
 	// Only "primary" | "secondary"
 	@Column(nullable = false)
+	@Enumerated(EnumType.STRING)
 	private LinkPrecedence linkPrecendence;
 	
 	@Column(nullable = false)
@@ -86,11 +89,11 @@ public class Contact {
 		this.email = email;
 	}
 
-	public int getLinkedId() {
+	public Integer getLinkedId() {
 		return linkedId;
 	}
 
-	public void setLinkedId(int linkedId) {
+	public void setLinkedId(Integer linkedId) {
 		this.linkedId = linkedId;
 	}
 
