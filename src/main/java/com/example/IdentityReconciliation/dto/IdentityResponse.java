@@ -20,7 +20,5 @@ public class IdentityResponse {
 	public String toString() {
 		return "IdentityResponse [contact=" + contact + "]";
 	}
-	
-	
 }
 //end of the class
