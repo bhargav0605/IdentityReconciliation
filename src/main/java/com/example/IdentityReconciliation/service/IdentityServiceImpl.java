@@ -31,11 +31,11 @@ public class IdentityServiceImpl implements IdentityService {
 	public IdentityResponse identify(IdentityRequest identityRequest) {
 		IdentityResponse identityResponse = null;
 		List<Contact> contacts = contactDaoImpl.getContact(identityRequest);
-		logger.info("Received Contactsin service: " + contacts);
+		logger.info("Received Contacts in identity service: " + contacts);
+		
 		// Email and phoneNumber
 		List<String> email = new ArrayList<>();
 		List<String> phoneNumbers = new ArrayList<>();
-
 		List<Integer> secondaryContactIds = new ArrayList<>();
 
 		ContactResponse contactResponse = new ContactResponse();
@@ -77,7 +77,6 @@ public class IdentityServiceImpl implements IdentityService {
 		} catch (MissingParameterException e) {
 			e.getMessage();
 		}
-	
 		return identityResponse;
 	}
 }
