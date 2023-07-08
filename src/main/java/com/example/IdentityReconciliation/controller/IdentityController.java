@@ -32,13 +32,11 @@ public class IdentityController {
 	
 	@PostMapping("/identify")
 	public ResponseEntity<Object> identify(@RequestBody IdentityRequest identityRequest) throws MissingParameterException{
-//		System.out.println(identityRequest);
+
 		IdentityResponse identityResponse = null;
 		String errorMessage = new String();
 		try {
-			if(identityRequest == null) {
-				System.out.println("Empty");
-			}
+
 			identityResponse = identityService.identify(identityRequest);
 			return new ResponseEntity<Object>(identityResponse, HttpStatus.OK);
 			
