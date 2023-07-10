@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  mysql:
+    image: mysql:8.0
+    ports:
+      - 4406:3306
+    environment:
+      MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
+    volumes:
+      - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+    secrets:
+      - mysql_root_password
+
+  spring-app:
+    image:  bhargav0605/identity_reconciliation:2.2
+    ports:
+      - 8080:8080
+    depends_on:
+      - mysql
+    environment:
+      DB_URL: jdbc:mysql://mysql:3306/identity_reconciliation
+      DB_USERNAME: blaster
+      DB_PASSWORD: blaster@25
+      DB_DRIVER_CLASS: com.mysql.cj.jdbc.Driver
+      DB_FORMAT_SQL: false
+      DB_SHOW_SQL: false
+      LOG_LEVEL: info
+    secrets:
+      - mysql_spring_username
+      - mysql_spring_password
+secrets:
+  mysql_root_password:
+    file: ./secrets/mysql_root_password.txt
+  mysql_spring_username:
+    file: ./secrets/mysql_spring_username.txt
+  mysql_spring_password:
+    file: ./secrets/mysql_spring_password.txt
+  
