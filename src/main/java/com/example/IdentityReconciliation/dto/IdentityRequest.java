@@ -4,8 +4,11 @@
  */
 package com.example.IdentityReconciliation.dto;
 
+import javax.validation.constraints.Email;
+
 public class IdentityRequest {
 	
+	@Email(message="Not an email.")
 	private String email;
 	
 	private long phoneNumber;
