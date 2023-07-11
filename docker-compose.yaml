@@ -32,13 +32,7 @@ services:
       DB_FORMAT_SQL: false
       DB_SHOW_SQL: false
       LOG_LEVEL: info
-    secrets:
-      - mysql_spring_username
-      - mysql_spring_password
+
 secrets:
   mysql_root_password:
     file: ./secrets/mysql_root_password.txt
-  mysql_spring_username:
-    file: ./secrets/mysql_spring_username.txt
-  mysql_spring_password:
-    file: ./secrets/mysql_spring_password.txt
