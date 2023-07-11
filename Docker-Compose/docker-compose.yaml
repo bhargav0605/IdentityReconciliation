@@ -8,6 +8,12 @@ services:
       MYSQL_ROOT_PASSWORD_FILE: /run/secrets/mysql_root_password
     volumes:
       - ./schema.sql:/docker-entrypoint-initdb.d/init.sql
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 5s
     secrets:
       - mysql_root_password
 
@@ -16,7 +22,8 @@ services:
     ports:
       - 8080:8080
     depends_on:
-      - mysql
+      mysql:
+        condition: service_healthy
     environment:
       DB_URL: jdbc:mysql://mysql:3306/identity_reconciliation
       DB_USERNAME: blaster
@@ -35,4 +42,3 @@ secrets:
     file: ./secrets/mysql_spring_username.txt
   mysql_spring_password:
     file: ./secrets/mysql_spring_password.txt
-  
