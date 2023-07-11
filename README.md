@@ -12,7 +12,8 @@
 * :whale: Dockerfile (Contains instruction to create an image.)
 * :whale: Docker Compose (Docker compose file which contains instruction of MySQL container and Spring application.)
 * :page_facing_up: README.md
-* :page_facing_up: Resume
+* :scroll: Bhargav-CKAD.jpg (Certified Kubernetes Application Developer certificate image.)
+* :page_facing_up: Bhargav_1620BEEC30008.pdf (Resume)
   
 ### How to run the project ###
 * Clone the project using this link:
