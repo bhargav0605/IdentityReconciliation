@@ -20,5 +20,5 @@
 * In this directory check if "docker-compose" file is present or not.
 * Now run "docker-compose up -d" command to run this project, it will pull all necessary images and run the migration script and wait till mysql container is ready to accept connection after that Spring application will be up and running.
 * To check if containers are up and running run below command:
-  * `#ffffff docker ps`
+  * `docker ps`
   * 
