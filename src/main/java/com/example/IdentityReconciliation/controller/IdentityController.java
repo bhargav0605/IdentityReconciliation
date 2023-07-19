@@ -31,19 +31,14 @@ public class IdentityController {
 	private IdentityServiceImpl identityService;
 	
 	@PostMapping("/identify")
-	public ResponseEntity<Object> identify(@Valid @RequestBody IdentityRequest identityRequest) throws MissingParameterException{
-
+	public ResponseEntity<Object> identify(@Valid @RequestBody(required = false) IdentityRequest identityRequest) throws MissingParameterException{
+		
 		IdentityResponse identityResponse = null;
-		String errorMessage = new String();
-		try {
-
+		if(identityRequest == null || (identityRequest.getPhoneNumber()==0 && (identityRequest.getEmail()=="" || identityRequest.getEmail()==null) ) ) {
+			throw new MissingParameterException("No Parameters are present.");
+		} else {
 			identityResponse = identityService.identify(identityRequest);
 			return new ResponseEntity<Object>(identityResponse, HttpStatus.OK);
-			
-		} catch (MissingParameterException e) {
-			logger.error(e.getMessage());
-			errorMessage = e.getMessage();
 		}
-		return new ResponseEntity<Object>(errorMessage, HttpStatus.BAD_REQUEST);
 	}
 }

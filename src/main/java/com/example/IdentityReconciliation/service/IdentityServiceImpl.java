@@ -32,51 +32,44 @@ public class IdentityServiceImpl implements IdentityService {
 		IdentityResponse identityResponse = null;
 		List<Contact> contacts = contactDaoImpl.getContact(identityRequest);
 		logger.info("Received Contacts in identity service: " + contacts);
-		
+
 		// Email and phoneNumber
 		List<String> email = new ArrayList<>();
 		List<String> phoneNumbers = new ArrayList<>();
 		List<Integer> secondaryContactIds = new ArrayList<>();
 
 		ContactResponse contactResponse = new ContactResponse();
-		
-		try {
-			
-			for (Contact contact : contacts) {
-				if (!email.contains(contact.getEmail())) {
-					if (contact.getEmail() != null) {
-						email.add(contact.getEmail());
-					}
-				}
 
-				// Phone check
-				if (!phoneNumbers.contains(contact.getPhoneNumber())) {
-					if (contact.getPhoneNumber() != null) {
-						phoneNumbers.add(contact.getPhoneNumber());
-					}
-				}
-
-				if (contact.getLinkPrecendence().toString() == "PRIMARY") {
-					contactResponse.setPrimaryContatctId(contact.getId());
-				} else {
-					secondaryContactIds.add(contact.getId());
+		for (Contact contact : contacts) {
+			if (!email.contains(contact.getEmail())) {
+				if (contact.getEmail() != null) {
+					email.add(contact.getEmail());
 				}
 			}
 
-			contactResponse.setEmails(email);
-			contactResponse.setPhoneNumbers(phoneNumbers);
-			contactResponse.setSecondaryContactIds(secondaryContactIds);
+			// Phone check
+			if (!phoneNumbers.contains(contact.getPhoneNumber())) {
+				if (contact.getPhoneNumber() != null) {
+					phoneNumbers.add(contact.getPhoneNumber());
+				}
+			}
 
-			identityResponse = new IdentityResponse();
-			identityResponse.setContact(contactResponse);
-
-			logger.info("Created Response is: " + identityResponse);
-
-			return identityResponse;
-			
-		} catch (MissingParameterException e) {
-			e.getMessage();
+			if (contact.getLinkPrecendence().toString() == "PRIMARY") {
+				contactResponse.setPrimaryContatctId(contact.getId());
+			} else {
+				secondaryContactIds.add(contact.getId());
+			}
 		}
+
+		contactResponse.setEmails(email);
+		contactResponse.setPhoneNumbers(phoneNumbers);
+		contactResponse.setSecondaryContactIds(secondaryContactIds);
+
+		identityResponse = new IdentityResponse();
+		identityResponse.setContact(contactResponse);
+
+		logger.info("Created Response is: " + identityResponse);
+
 		return identityResponse;
 	}
 }
