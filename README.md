@@ -11,6 +11,7 @@
 * :page_facing_up: schema.sql (Data migration script.)
 * :whale: Dockerfile (Contains instruction to create an image.)
 * :whale: Docker Compose (Docker compose file which contains instruction of MySQL container and Spring application.)
+* :page_facing_up: runit.bat (Creates jar file and docker image and push docker image to docker hub with new image tag which is in YYYYMMDD format.)
 * :page_facing_up: README.md
 * :scroll: Bhargav-CKAD.jpg (Certified Kubernetes Application Developer certificate image.)
 * :page_facing_up: Bhargav_1620BEEC30008.pdf (Resume)
