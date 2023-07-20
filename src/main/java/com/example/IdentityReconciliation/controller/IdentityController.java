@@ -27,8 +27,13 @@ public class IdentityController {
 	
 	public static Logger logger = LoggerFactory.getLogger(IdentityController.class);
 	
-	@Autowired
+	
 	private IdentityServiceImpl identityService;
+	
+	@Autowired
+	public IdentityController(IdentityServiceImpl identityService) {
+		this.identityService = identityService;
+	}
 	
 	@PostMapping("/identify")
 	public ResponseEntity<Object> identify(@Valid @RequestBody(required = false) IdentityRequest identityRequest) throws MissingParameterException{

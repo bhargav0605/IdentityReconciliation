@@ -24,8 +24,13 @@ public class IdentityServiceImpl implements IdentityService {
 
 	private static Logger logger = LoggerFactory.getLogger(IdentityServiceImpl.class);
 
-	@Autowired
+	
 	private ContactDaoImpl contactDaoImpl;
+	
+	@Autowired
+	public IdentityServiceImpl(ContactDaoImpl contactDaoImpl) {
+		this.contactDaoImpl = contactDaoImpl;
+	}
 
 	@Override
 	public IdentityResponse identify(IdentityRequest identityRequest) {
