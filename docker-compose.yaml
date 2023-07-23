@@ -18,7 +18,7 @@ services:
       - mysql_root_password
 
   spring-app:
-    image:  bhargav0605/identity_reconciliation:2.2
+    image:  bhargav0605/identity_reconciliation:20230720155830
     ports:
       - 8080:8080
     depends_on:
