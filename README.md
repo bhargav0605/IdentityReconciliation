@@ -1,4 +1,4 @@
-# Bitespeed Backend Test: Identity Reconciliation #
+# Identity Reconciliation #
 
 **Backend Framework:** Java, Spring-boot
 **Database:** MySQL
